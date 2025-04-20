@@ -1,0 +1,38 @@
+error: found global variable
+  --> tests/ui/global_variables.rs:8:9
+   |
+LL |         static GLOBAL_VARIABLE_0: AtomicU32 = AtomicU32::new(2);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+LL |     define_global_variable_with_macro!();
+   |     ------------------------------------ in this macro invocation
+   |
+   = note: `-D clippy::global-variables` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(clippy::global_variables)]`
+   = note: this error originates in the macro `define_global_variable_with_macro` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: found global variable
+  --> tests/ui/global_variables.rs:11:9
+   |
+LL |         static GLOBAL_VARIABLE_1: Mutex<u32> = Mutex::new(3);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+LL |     define_global_variable_with_macro!();
+   |     ------------------------------------ in this macro invocation
+   |
+   = note: this error originates in the macro `define_global_variable_with_macro` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: found global variable
+  --> tests/ui/global_variables.rs:19:5
+   |
+LL |     static GLOBAL_VARIABLE_2: AtomicU32 = AtomicU32::new(2);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: found global variable
+  --> tests/ui/global_variables.rs:22:5
+   |
+LL |     static GLOBAL_VARIABLE_3: Mutex<u32> = Mutex::new(3);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 4 previous errors
+

@@ -155,6 +155,7 @@ mod from_raw_with_void_ptr;
 mod from_str_radix_10;
 mod functions;
 mod future_not_send;
+mod global_variables;
 mod if_let_mutex;
 mod if_not_else;
 mod if_then_some_else_none;
@@ -943,5 +944,6 @@ pub fn register_lints(store: &mut rustc_lint::LintStore, conf: &'static Conf) {
     store.register_late_pass(|_| Box::new(manual_option_as_slice::ManualOptionAsSlice::new(conf)));
     store.register_late_pass(|_| Box::new(single_option_map::SingleOptionMap));
     store.register_late_pass(move |_| Box::new(redundant_test_prefix::RedundantTestPrefix));
+    store.register_late_pass(|_| Box::new(global_variables::GlobalVariables));
     // add lints here, do not remove this comment, it's used in `new_lint`
 }
